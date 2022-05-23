@@ -62,12 +62,9 @@ const addStudent = (recordId, req, res) => {
     { useUnifiedTopology: true },
     function (err, client) {
       if (err) {
-        return res
-          .status(500)
-          .send({
-            message:
-              "error - internal server error: cannot connect to database",
-          });
+        return res.status(500).send({
+          message: "error - internal server error: cannot connect to database",
+        });
       }
       var dbo = client.db("FAU");
       // Create JSON object for student to insert
@@ -94,11 +91,9 @@ const addStudent = (recordId, req, res) => {
         } else {
           // duplicate found
           client.close();
-          return res
-            .status(400)
-            .send({
-              message: `error - duplicate found for ${obj.firstName} ${obj.lastName}`,
-            });
+          return res.status(400).send({
+            message: `error - duplicate found for ${obj.firstName} ${obj.lastName}`,
+          });
         }
       });
     }
@@ -175,12 +170,9 @@ const findStudent = (recordId, res) => {
     { useUnifiedTopology: true },
     function (err, client) {
       if (err) {
-        return res
-          .status(500)
-          .send({
-            message:
-              "error - internal server error: cannot connect to database",
-          });
+        return res.status(500).send({
+          message: "error - internal server error: cannot connect to database",
+        });
       }
       var dbo = client.db("FAU");
       // Define a filter query
@@ -241,12 +233,9 @@ const searchStudents = (firstName = "", lastName = "", res) => {
     { useUnifiedTopology: true },
     function (err, client) {
       if (err) {
-        return res
-          .status(500)
-          .send({
-            message:
-              "error - internal server error: cannot connect to database",
-          });
+        return res.status(500).send({
+          message: "error - internal server error: cannot connect to database",
+        });
       }
       var dbo = client.db("FAU");
 
@@ -263,11 +252,9 @@ const searchStudents = (firstName = "", lastName = "", res) => {
         .find(query)
         .toArray(function (err, mongoRes) {
           if (err) {
-            return res
-              .status(500)
-              .send({
-                message: "error - internal server error: cannot search",
-              });
+            return res.status(500).send({
+              message: "error - internal server error: cannot search",
+            });
           }
           client.close();
           if (mongoRes.length == 0) {
@@ -313,12 +300,9 @@ const updateStudent = (recordId, obj, res) => {
     { useUnifiedTopology: true },
     function (err, client) {
       if (err) {
-        return res
-          .status(500)
-          .send({
-            message:
-              "error - internal server error: cannot connect to database",
-          });
+        return res.status(500).send({
+          message: "error - internal server error: cannot connect to database",
+        });
       }
       var dbo = client.db("FAU");
       // Define a filter query
@@ -336,11 +320,9 @@ const updateStudent = (recordId, obj, res) => {
         .collection("students")
         .updateOne(query, newvals, function (err, mongoRes) {
           if (err) {
-            return res
-              .status(500)
-              .send({
-                message: "error - internal server error: cannot update",
-              });
+            return res.status(500).send({
+              message: "error - internal server error: cannot update",
+            });
           }
           var rspObj = {};
           rspObj._id = recordId;
@@ -388,12 +370,9 @@ const deleteStudent = (recordId, res) => {
     { useUnifiedTopology: true },
     function (err, client) {
       if (err) {
-        return res
-          .status(500)
-          .send({
-            message:
-              "error - internal server error: cannot connect to database",
-          });
+        return res.status(500).send({
+          message: "error - internal server error: cannot connect to database",
+        });
       }
       var dbo = client.db("FAU");
       // Define a filter query
@@ -424,4 +403,4 @@ const deleteStudent = (recordId, res) => {
 };
 
 app.listen(5678); //start the server
-console.log("Server is running...");
+console.log("Server is running at http://localhost:5678");
