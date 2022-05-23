@@ -1,0 +1,4 @@
+/* Enrolled radio buttons */
+input[name="enrolled"] {
+  margin: 0 0 0 30px;
+}

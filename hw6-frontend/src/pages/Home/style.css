@@ -1,0 +1,19 @@
+.icon {
+  font-size: 100px;
+}
+
+.icon:link,
+.icon:visited,
+.icon:active {
+  color: black;
+  text-decoration: none;
+}
+
+.icon:hover {
+  color: #1a75ff;
+}
+
+/* Add spacing above links */
+.bottom-buffer {
+  margin-bottom: 150px;
+}
