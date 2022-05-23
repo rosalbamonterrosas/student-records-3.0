@@ -1,4 +1,4 @@
-# Student Records - React
+# Student Records - React, MongoDB, Node.js, and Express
 
 Rosalba Monterrosas
 
