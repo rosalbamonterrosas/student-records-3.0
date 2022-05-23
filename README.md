@@ -54,6 +54,7 @@ The frontend interacts with the existing backend (studentserver.js).
     * node v16.14.0
     * npm v8.4.1
     *	MongoDB
+    * Prettier
 
 2.	Run the command `npm install` to install all modules listed as dependencies 
 in `package.json`
